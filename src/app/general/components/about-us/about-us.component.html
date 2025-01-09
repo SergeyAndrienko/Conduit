@@ -1,0 +1,69 @@
+<div class="about-us-container">
+  <h1>About Us</h1>
+
+  <p>
+    Welcome to our project! This application is a clone of the popular news-sharing platform Medium. It has been
+    developed for educational purposes and to demonstrate modern web application development techniques.
+  </p>
+
+  <h2>Our Mission</h2>
+  <p>
+    Our goal is to provide a platform where users can explore, share, and publish content just like on Medium. This
+    project showcases advanced features of Angular, including state management, component-based architecture, and
+    material design.
+  </p>
+
+  <h2>Contacts</h2>
+  <ul>
+    <li>
+      <a href="mailto:example@domain.com"> <strong>Email</strong></a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/sergey-andrienko/" target="_blank"> <strong>LinkedIn</strong></a>
+    </li>
+    <li>
+      <a href="https://github.com/SergeyAndrienko" target="_blank"> <strong>GitHub</strong></a>
+    </li>
+  </ul>
+
+  <h2>Our Developers</h2>
+  <p>This project is developed and maintained by:</p>
+  <ul>
+    <li><strong>Sergey Andrienko</strong> Experienced in Angular, NgRx, and backend integrations.</li>
+    <li><strong>Rodyslav Sinitsyn</strong> Specializes in UI/UX design, Material CSS, and responsive web design.</li>
+  </ul>
+
+  <h2>Technology Stack</h2>
+  <p>We are using the following technologies to build this application:</p>
+  <ul>
+    <li><strong>Angular:</strong> For the front-end framework and component-based architecture.</li>
+    <li><strong>NgRx (Redux):</strong> For state management.</li>
+    <li><strong>RxJS:</strong> For handling asynchronous data streams.</li>
+    <li><strong>Material CSS:</strong> For styling and pre-built UI components.</li>
+    <li><strong>TypeScript:</strong> For type safety and scalability.</li>
+  </ul>
+
+
+  <h2>Subscribe to Our Updates</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        matInput
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        [readonly]="isSubscribed()"
+        required
+      />
+    </div>
+    <button type="submit" [disabled]="form.invalid">
+      {{ isSubscribed() ? 'Unsubscribe' : 'Subscribe' }}
+    </button>
+  </form>
+
+  <p>
+    Thank you for visiting our app. We hope you enjoy using it as much as we enjoyed building it!
+  </p>
+</div>
