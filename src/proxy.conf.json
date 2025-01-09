@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://conduit-realworld-example-app.fly.dev",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
