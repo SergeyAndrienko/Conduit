@@ -4,7 +4,6 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms'
 import {MatInput} from '@angular/material/input'
 import {PersistenceService} from '@shared/services/persistence.service'
@@ -16,9 +15,7 @@ import {
 } from '@app/general/store/actions/subscription.action'
 import {DisableInputDirective} from '@shared/directives/disable-input.directive'
 import {emailValidation} from '@shared/validations/email.validation'
-import {
-  FrontendErrorMessagesComponent
-} from '@shared/components/frontend-error-messages/frontend-error-messages.component'
+import {FrontendErrorMessagesComponent} from '@shared/components/frontend-error-messages/frontend-error-messages.component'
 
 @Component({
   selector: 'md-subscription-form',
