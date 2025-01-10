@@ -9,11 +9,14 @@
       type="email"
       formControlName="email"
       placeholder="Enter your email"
+      (focusout)="this.validate.set(true)"
       [isDisabled]="isSubscribed()"
-      required
     />
+    <md-frontend-error-messages [submitted]="validate()"
+                                [control]="form.get('email')">
+    </md-frontend-error-messages>
   </div>
-  <button type="submit" [disabled]="form.invalid">
+  <button type="submit" [disabled]="form.invalid || !form.get('email')?.value">
     {{ isSubscribed() ? 'Unsubscribe' : 'Subscribe' }}
   </button>
 </form>
