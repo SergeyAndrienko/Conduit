@@ -1,7 +1,8 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'src/medium-theme.scss';
 
 html {
   @include mat.theme((
@@ -10,10 +11,18 @@ html {
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: Helvetica,
     density: 0,
   ));
-}/* You can add global styles to this file, and also import other style files */
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

@@ -7,7 +7,7 @@ import {subscriptionReducer} from '@app/general/store/reducers'
 
 export const routes: Routes = [
   {
-    path: 'about-us',
+    path: 'aboutUs',
     component: AboutUsComponent,
     providers: [
       provideState({

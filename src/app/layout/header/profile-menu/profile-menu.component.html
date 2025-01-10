@@ -1,0 +1,22 @@
+<div class="card profile-menu" cdkMenu>
+  <a class="nav-link menu-nav-link align-items-center d-flex "
+     [routerLink]="['/profiles', currentUserProps()?.username]">
+    <mat-icon mat-card-avatar class="material-symbols-outlined me-2">
+      person
+    </mat-icon>
+    Profile
+  </a>
+  <a class="nav-link menu-nav-link align-items-center d-flex " [routerLink]="['/settings']">
+    <mat-icon mat-card-avatar class="material-symbols-outlined me-2">
+      settings
+    </mat-icon>
+    Settings
+  </a>
+  <mat-divider class="mt-1 mb-1" />
+  <a class="nav-link menu-nav-link align-items-center d-flex " [routerLink]="['/logout']">
+    <mat-icon mat-card-avatar class="material-symbols-outlined me-2">
+      logout
+    </mat-icon>
+    Sign out
+  </a>
+</div>

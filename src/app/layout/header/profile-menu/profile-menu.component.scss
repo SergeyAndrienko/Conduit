@@ -1,0 +1,11 @@
+@import "src/medium-theme.scss";
+
+.profile-menu {
+  min-width: 180px;
+  padding: 16px 0;
+
+  .menu-nav-link {
+    color: $gray-dark;
+    padding: 8px 24px;
+  }
+}

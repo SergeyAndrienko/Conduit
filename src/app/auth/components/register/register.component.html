@@ -1,17 +1,17 @@
 <div class="auth-page">
-  <div class="container page">
+  <div class="container mt-5">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Sign Up</h1>
-        <p class="text-xs-center">
-          <a [routerLink]="['/login']">Have an account?</a>
+        <h1 class="text-center">Sign Up</h1>
+        <p class="text-center">
+          <a class="link-primary" [routerLink]="['/login']">Have an account?</a>
         </p>
         @if (backendErrors()) {
           <md-backend-error-messages [backendErrors]="backendErrors()" />
         }
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset>
-            <fieldset class="form-group">
+            <fieldset class="mb-3">
               <input matInput type="text"
                      class="form-control form-control-lg"
                      placeholder="Username"
@@ -20,7 +20,7 @@
                                           [control]="form.get('username')">
               </md-frontend-error-messages>
             </fieldset>
-            <fieldset class="form-group">
+            <fieldset class="mb-3">
               <input matInput type="text"
                      class="form-control form-control-lg"
                      placeholder="Email"
@@ -30,7 +30,7 @@
                                           [control]="form.get('email')">
               </md-frontend-error-messages>
             </fieldset>
-            <fieldset class="form-group">
+            <fieldset class="mb-3">
               <input matInput type="password"
                      class="form-control form-control-lg"
                      placeholder="Password"
@@ -39,7 +39,7 @@
                                           [control]="form.get('password')">
               </md-frontend-error-messages>
             </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right"
+            <button class="btn btn-lg button-primary d-block ms-auto"
                     type="submit">Sign Up
             </button>
           </fieldset>
