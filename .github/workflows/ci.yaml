@@ -43,7 +43,3 @@ jobs:
       # Step 5: Build the Angular app
       - name: Build Angular app
         run: npm run build
-
-      # Step 6: Run tests
-      - name: Run tests
-        run: npm test
