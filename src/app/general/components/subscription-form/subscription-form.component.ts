@@ -36,13 +36,11 @@ export class SubscriptionFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const existingEmail: String =
-      this.persistenceService.get('subscriptionMail') || ''
-    this.store.dispatch(setSubscriptionStatusAction({subscribed: !!existingEmail}))
-    this.initializeForm(existingEmail)
+    const email = this.initializeSubscriptionState()
+    this.initializeForm(email)
   }
 
-  private initializeForm(email: String) {
+  private initializeForm(email: String | null) {
     this.form = this.fb.group({
       email: [email, [Validators.required, emailValidation]],
     })
@@ -62,5 +60,12 @@ export class SubscriptionFormComponent implements OnInit {
       this.store.dispatch(subscribeAction({email}))
       this.notifyOnSubscribe.emit(email)
     }
+  }
+
+  private initializeSubscriptionState(): String | null {
+    const existingEmail: String =
+      this.persistenceService.get('subscriptionMail') || ''
+    this.store.dispatch(setSubscriptionStatusAction({subscribed: !!existingEmail}),)
+    return existingEmail
   }
 }
