@@ -11,7 +11,6 @@ export const routes: Routes = [
     component: AboutUsComponent,
     providers: [
       provideState({
-        name: 'subscription',
         reducer: subscriptionReducer,
       }),
       provideEffects([SubscriptionEffect]),
