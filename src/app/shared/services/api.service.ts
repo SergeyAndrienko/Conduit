@@ -1,15 +1,13 @@
 import {Injectable} from '@angular/core'
 import {HttpClient, HttpParams} from '@angular/common/http'
-import {environment} from '../environments/environment'
 import {Observable} from 'rxjs'
+import {environment} from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root',
 })
-export class AppServiceHTTP {
+export class ApiService {
   constructor(private http: HttpClient) {}
-
-  private corsProxy = 'https://cors-anywhere.herokuapp.com/'
 
   get<T>(path: string, params?: HttpParams): Observable<T> {
     return this.http.get<T>(this.apiUrl(path), {params})
