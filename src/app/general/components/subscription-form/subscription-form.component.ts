@@ -15,6 +15,7 @@ import {
   unsubscribeAction,
 } from '@app/auth/store/actions/subscription.action'
 import {DisableInputDirective} from '@shared/directives/disable-input.directive'
+import {emailValidation} from '@shared/validations/email.validation'
 
 @Component({
   selector: 'md-subscription-form',
@@ -37,21 +38,18 @@ export class SubscriptionFormComponent implements OnInit {
   ngOnInit(): void {
     const existingEmail: String =
       this.persistenceService.get('subscriptionMail') || ''
-    this.store.dispatch(
-      setSubscriptionStatusAction({subscribed: !!existingEmail}),
-    )
+    this.store.dispatch(setSubscriptionStatusAction({subscribed: !!existingEmail}))
     this.initializeForm(existingEmail)
   }
 
   private initializeForm(email: String) {
     this.form = this.fb.group({
-      email: [email, [Validators.required, Validators.email]],
+      email: [email, [Validators.required, emailValidation]],
     })
   }
 
   onSubmit(): void {
-    if (!this.form.valid && !this.isSubscribed()) {
-      // TODO: Why form invalid?
+    if (!this.form.valid) {
       console.error('Subscription form invalid')
       return
     }

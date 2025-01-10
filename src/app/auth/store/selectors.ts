@@ -21,5 +21,5 @@ export const validationErrorsSelector = createSelector(
 
 export const isUserSubscribedSelector = createSelector(
   selectAuthState,
-  (authState) => authState?.isSubscribed || false,
+  (authState) => authState.isSubscribed
 )
