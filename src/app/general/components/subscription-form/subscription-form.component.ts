@@ -4,9 +4,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms'
-import {MatInput} from '@angular/material/input'
 import {PersistenceService} from '@shared/services/persistence.service'
 import {Store} from '@ngrx/store'
 import {
@@ -16,18 +14,15 @@ import {
 } from '@app/general/store/actions/subscription.action'
 import {DisableInputDirective} from '@shared/directives/disable-input.directive'
 import {emailValidation} from '@shared/validations/email.validation'
-import {
-  FrontendErrorMessagesComponent
-} from '@shared/components/frontend-error-messages/frontend-error-messages.component'
+import {InputComponent} from '@shared/components/input/input.component'
 
 @Component({
   selector: 'md-subscription-form',
   imports: [
     FormsModule,
-    MatInput,
     ReactiveFormsModule,
     DisableInputDirective,
-    FrontendErrorMessagesComponent,
+    InputComponent,
   ],
   templateUrl: './subscription-form.component.html',
   styleUrl: './subscription-form.component.scss',
@@ -80,5 +75,9 @@ export class SubscriptionFormComponent implements OnInit {
       setSubscriptionStatusAction({subscribed: !!existingEmail}),
     )
     return existingEmail
+  }
+
+  test(event: any) {
+    console.log(event)
   }
 }

@@ -1,0 +1,15 @@
+<div class="form-group">
+  <label [for]="id">{{ name }}</label>
+  <input
+    [id]="id"
+    [type]="type"
+    [name]="name"
+    [formControl]="control"
+    [value]="value"
+    [placeholder]="placeholder"
+    (input)="onInputChange($event)"
+  />
+  <md-frontend-error-messages [submitted]="submitted()"
+                              [control]="control">
+  </md-frontend-error-messages>
+</div>

@@ -1,21 +1,17 @@
 <h2>Subscribe to Our Updates</h2>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input
-      matInput
-      mdDisableInput
-      id="email"
-      type="email"
-      formControlName="email"
-      placeholder="Enter your email"
-      (focusout)="this.validate.set(true)"
-      [isDisabled]="isSubscribed()"
-    />
-    <md-frontend-error-messages [submitted]="validate()"
-                                [control]="form.get('email')">
-    </md-frontend-error-messages>
-  </div>
+  <md-input
+    matInput
+    mdDisableInput
+    id="email"
+    type="email"
+    placeholder="Enter your email"
+    name="email"
+    [control]="form.get('email')"
+    (focusout)="this.validate.set(true)"
+    [isDisabled]="isSubscribed()"
+    [submitted]="validate()"
+  />
   <button type="submit" [disabled]="form.invalid || !form.get('email')?.value">
     {{ isSubscribed() ? 'Unsubscribe' : 'Subscribe' }}
   </button>
