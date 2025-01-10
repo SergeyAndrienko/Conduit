@@ -1,0 +1,9 @@
+<ng-container>
+  @if (control && control.errors && submitted) {
+    @for (error of errorMessages; track errorMessages) {
+      <small class="error-messages">
+        {{ error }}
+      </small>
+    }
+  }
+</ng-container>

@@ -11,7 +11,6 @@ import {provideStore} from '@ngrx/store'
 import {provideStoreDevtools} from '@ngrx/store-devtools'
 import {environment} from '../environments/environment'
 import {authRoutes} from './auth/routes/auth.routes'
-import {AppServiceHTTP} from './app.service'
 import {provideHttpClient} from '@angular/common/http'
 import {provideEffects} from '@ngrx/effects'
 
@@ -28,6 +27,5 @@ export const appConfig: ApplicationConfig = {
       logOnly: environment.production,
     }),
     provideHttpClient(),
-    AppServiceHTTP,
   ],
 }

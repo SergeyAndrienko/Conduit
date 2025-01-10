@@ -1,7 +1,12 @@
-import {Component, OnInit, Signal} from '@angular/core'
+import {Component, OnInit, signal, Signal} from '@angular/core'
 import {BackendErrorMessagesComponent} from '@shared/components/backend-error-messages/backend-error-messages.component'
 import {MatInput} from '@angular/material/input'
-import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms'
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms'
 import {BackendErrorsInterface} from '@shared/types/backendErrors.interface'
 import {Store} from '@ngrx/store'
 import {
@@ -11,6 +16,8 @@ import {
 import {loginAction} from '@app/auth/store/actions/login.action'
 import {LoginRequestInterface} from '@app/auth/types/loginRequest.interface'
 import {RouterLink} from '@angular/router'
+import {FrontendErrorMessagesComponent} from '@shared/components/frontend-error-messages/frontend-error-messages.component'
+import {emailValidation} from '@shared/validations/email.validation'
 
 @Component({
   selector: 'md-login',
@@ -19,6 +26,7 @@ import {RouterLink} from '@angular/router'
     BackendErrorMessagesComponent,
     MatInput,
     ReactiveFormsModule,
+    FrontendErrorMessagesComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -27,6 +35,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup
   isSubmitting!: Signal<boolean>
   backendErrors!: Signal<BackendErrorsInterface | null>
+  submitted = signal(false)
 
   constructor(
     private fb: FormBuilder,
@@ -45,16 +54,18 @@ export class LoginComponent implements OnInit {
 
   initializeForm(): void {
     this.form = this.fb.group({
-      email: '',
-      password: '',
+      email: ['', [Validators.required, emailValidation]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     })
   }
 
   onSubmit(): void {
-    console.log('Form submitted', this.form.valid)
-    const request: LoginRequestInterface = {
-      user: this.form.value,
+    this.submitted.set(true)
+    if (this.form.valid) {
+      const request: LoginRequestInterface = {
+        user: this.form.value,
+      }
+      this.store.dispatch(loginAction({request}))
     }
-    this.store.dispatch(loginAction({request}))
   }
 }
