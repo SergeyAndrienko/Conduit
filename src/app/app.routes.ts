@@ -1,9 +1,9 @@
 import {Routes} from '@angular/router'
 import {AboutUsComponent} from '@app/general/components/about-us/about-us.component'
-import {authReducer} from '@app/auth/store/reducers'
 import {provideState} from '@ngrx/store'
 import {provideEffects} from '@ngrx/effects'
-import {SubscriptionEffect} from '@app/auth/store/effects/subscription.effect'
+import {SubscriptionEffect} from '@app/general/store/effects/subscription.effect'
+import {subscriptionReducer} from '@app/general/store/reducers'
 
 export const routes: Routes = [
   {
@@ -11,10 +11,10 @@ export const routes: Routes = [
     component: AboutUsComponent,
     providers: [
       provideState({
-        name: 'auth', // TODO: Probably need to give another name
-        reducer: authReducer,
+        name: 'subscription',
+        reducer: subscriptionReducer,
       }),
-      provideEffects([SubscriptionEffect])
+      provideEffects([SubscriptionEffect]),
     ],
   },
 ]

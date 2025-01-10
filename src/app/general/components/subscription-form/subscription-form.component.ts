@@ -13,7 +13,7 @@ import {
   setSubscriptionStatusAction,
   subscribeAction,
   unsubscribeAction,
-} from '@app/auth/store/actions/subscription.action'
+} from '@app/general/store/actions/subscription.action'
 import {DisableInputDirective} from '@shared/directives/disable-input.directive'
 import {emailValidation} from '@shared/validations/email.validation'
 

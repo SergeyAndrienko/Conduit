@@ -1,4 +1,3 @@
-// TODO: Move to another package not under 'auth'
 import {createAction, props} from '@ngrx/store'
 import {ActionTypes} from '@app/auth/store/actionTypes'
 

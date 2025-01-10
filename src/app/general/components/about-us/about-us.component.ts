@@ -1,8 +1,8 @@
 import {Component, OnInit, Signal} from '@angular/core'
 import {ReactiveFormsModule} from '@angular/forms'
 import {Store} from '@ngrx/store'
-import {isUserSubscribedSelector} from '@app/auth/store/selectors'
 import {SubscriptionFormComponent} from '@app/general/components/subscription-form/subscription-form.component'
+import {isUserSubscribedSelector} from '@app/general/store/selectors'
 
 @Component({
   selector: 'md-about-us',

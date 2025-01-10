@@ -10,18 +10,12 @@ import {
   loginFailureAction,
   loginSuccessAction,
 } from '@app/auth/store/actions/login.action'
-import {
-  setSubscriptionStatusAction,
-  subscribeAction,
-  unsubscribeAction
-} from '@app/auth/store/actions/subscription.action'
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
   currentUser: null,
   isLoggedIn: null,
   validationErrors: null,
-  isSubscribed: false
 }
 
 export const authReducer = createReducer(
@@ -74,27 +68,6 @@ export const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       validationErrors: action.errors,
-    }),
-  ),
-  on(
-    setSubscriptionStatusAction,
-    (state, action): AuthStateInterface => ({
-      ...state,
-      isSubscribed: action.subscribed
-    }),
-  ),
-  on(
-    subscribeAction,
-    (state, action): AuthStateInterface => ({
-      ...state,
-      isSubscribed: true,
-    }),
-  ),
-  on(
-    unsubscribeAction,
-    (state, action): AuthStateInterface => ({
-      ...state,
-      isSubscribed: false,
     }),
   ),
 )

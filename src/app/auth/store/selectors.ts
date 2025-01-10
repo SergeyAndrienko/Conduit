@@ -18,8 +18,3 @@ export const validationErrorsSelector = createSelector(
   selectAuthState,
   (authState) => authState.validationErrors,
 )
-
-export const isUserSubscribedSelector = createSelector(
-  selectAuthState,
-  (authState) => authState.isSubscribed
-)

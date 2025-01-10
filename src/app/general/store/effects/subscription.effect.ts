@@ -1,4 +1,3 @@
-// TODO: Move to another package not under 'auth'
 import {Injectable} from '@angular/core'
 import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {tap} from 'rxjs'
@@ -6,7 +5,7 @@ import {PersistenceService} from '@shared/services/persistence.service'
 import {
   subscribeAction,
   unsubscribeAction,
-} from '@app/auth/store/actions/subscription.action'
+} from '@app/general/store/actions/subscription.action'
 
 @Injectable()
 export class SubscriptionEffect {
@@ -15,7 +14,8 @@ export class SubscriptionEffect {
     private persistenceService: PersistenceService,
   ) {}
 
-  subscribe$ = createEffect(() =>
+  subscribe$ = createEffect(
+    () =>
       this.actions$.pipe(
         ofType(subscribeAction),
         tap(({email}) =>
@@ -25,7 +25,8 @@ export class SubscriptionEffect {
     {dispatch: false},
   )
 
-  unsubscribe$ = createEffect(() =>
+  unsubscribe$ = createEffect(
+    () =>
       this.actions$.pipe(
         ofType(unsubscribeAction),
         tap(() => this.persistenceService.remove('subscriptionMail')),
