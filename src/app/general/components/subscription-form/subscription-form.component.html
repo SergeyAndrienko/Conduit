@@ -1,0 +1,19 @@
+<h2>Subscribe to Our Updates</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      matInput
+      mdDisableInput
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="Enter your email"
+      [isDisabled]="isSubscribed()"
+      required
+    />
+  </div>
+  <button type="submit" [disabled]="form.invalid">
+    {{ isSubscribed() ? 'Unsubscribe' : 'Subscribe' }}
+  </button>
+</form>
