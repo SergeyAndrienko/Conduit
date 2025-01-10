@@ -7,7 +7,7 @@ import {
 } from '../actions/register.action'
 import {catchError, map, of, switchMap, tap} from 'rxjs'
 import {AuthService} from '../../services/auth.service'
-import {CurrentUserInterface} from '../../../shared/types/currentUser.interface'
+import {CurrentUserInterface} from '@shared/types/currentUser.interface'
 import {HttpErrorResponse} from '@angular/common/http'
 import {PersistenceService} from '@shared/services/persistence.service'
 import {Router} from '@angular/router'

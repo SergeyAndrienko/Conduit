@@ -11,8 +11,9 @@ import {provideStore} from '@ngrx/store'
 import {provideStoreDevtools} from '@ngrx/store-devtools'
 import {environment} from '../environments/environment'
 import {authRoutes} from './auth/routes/auth.routes'
-import {provideHttpClient} from '@angular/common/http'
+import {provideHttpClient, withInterceptors} from '@angular/common/http'
 import {provideEffects} from '@ngrx/effects'
+import {TokenInterceptionService} from '@shared/services/token-interception.service'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,6 @@ export const appConfig: ApplicationConfig = {
       maxAge: 25,
       logOnly: environment.production,
     }),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([TokenInterceptionService])),
   ],
 }
