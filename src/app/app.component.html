@@ -1,2 +1,5 @@
 <md-header />
 <router-outlet />
+@if (isLoading()) {
+  <md-spinner />
+}

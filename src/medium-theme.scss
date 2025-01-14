@@ -105,12 +105,20 @@ $green: #00ab6b;
   }
 }
 
+.nav-item {
+  height: 45px;
+}
+
 .nav-link {
   color: $black;
   font-size: 14px;
+  display: flex;
+  height: 100%;
+  align-items: center;
   cursor: pointer;
   text-decoration: none;
   outline: none !important;
+  padding: 10px;
 
   &:hover {
     color: $green !important;
@@ -119,4 +127,10 @@ $green: #00ab6b;
   &:focus {
     color: $black;
   }
+}
+
+.profile-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 }

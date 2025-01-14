@@ -1,4 +1,4 @@
-@import "src/medium-theme.scss";
+@use "src/medium-theme.scss" as *;
 
 .profile-menu {
   min-width: 180px;

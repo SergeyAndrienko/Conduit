@@ -2,7 +2,7 @@ import {HttpInterceptorFn} from '@angular/common/http'
 import {PersistenceService} from '@shared/services/persistence.service'
 import {inject} from '@angular/core'
 
-export const TokenInterceptionService: HttpInterceptorFn = (req, next) => {
+export const TokenInterception: HttpInterceptorFn = (req, next) => {
   const persistenceService = inject(PersistenceService)
   const token = persistenceService.get('accessToken')
 
