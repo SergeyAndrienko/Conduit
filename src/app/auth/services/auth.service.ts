@@ -7,7 +7,9 @@ import {AuthResponseInterface} from '../types/authResponse.interface'
 import {LoginRequestInterface} from '@app/auth/types/loginRequest.interface'
 import {ApiService} from '@shared/services/api.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   url: string = environment.apiUrl
 
@@ -27,5 +29,9 @@ export class AuthService {
     return this.http
       .post<AuthResponseInterface>(`/users/login`, data)
       .pipe(map(this.getUser))
+  }
+
+  getCurrentUser(): Observable<CurrentUserInterface> {
+    return this.http.get<AuthResponseInterface>(`/user`).pipe(map(this.getUser))
   }
 }

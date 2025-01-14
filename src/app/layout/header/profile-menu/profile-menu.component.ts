@@ -5,6 +5,8 @@ import {MatCardAvatar} from '@angular/material/card'
 import {MatDivider} from '@angular/material/divider'
 import {CdkMenu} from '@angular/cdk/menu'
 import {CurrentUserInterface} from '@shared/types/currentUser.interface'
+import {logoutAction} from '@app/auth/store/actions/logout.action'
+import {Store} from '@ngrx/store'
 
 @Component({
   selector: 'md-profile-menu',
@@ -15,4 +17,10 @@ import {CurrentUserInterface} from '@shared/types/currentUser.interface'
 })
 export class ProfileMenuComponent {
   @Input('currentUser') currentUserProps!: Signal<CurrentUserInterface | null>
+
+  constructor(private store: Store) {}
+
+  logout(): void {
+    this.store.dispatch(logoutAction())
+  }
 }

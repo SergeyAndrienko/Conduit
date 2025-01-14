@@ -1,24 +1,28 @@
-<nav class="navbar navbar-light">
+<nav class="navbar pt-2 pb-2 navbar-light">
   <div class="container align-items-center">
     <a class="logo" [routerLink]="['/']">Medium</a>
     <ul class="nav pull-xs-right d-flex">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/']">Home</a>
       </li>
-      @if (isLoginIn()) {
-        <ng-container>
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" [routerLink]="['/articles/new']">
-              <mat-icon mat-card-avatar class="material-symbols-outlined user-icon">
-                edit_square
-              </mat-icon>
-              &nbsp; New Post
-            </a>
-          </li>
-          <li class="nav-item" [cdkMenuTriggerFor]="profileMenu">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/aboutUs']">
+          &nbsp; About Us
+        </a>
+      </li>
+      @if (isLoggedIn()) {
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center" [routerLink]="['/articles/new']">
+            <mat-icon mat-card-avatar class="material-symbols-outlined user-icon">
+              edit_square
+            </mat-icon>
+            &nbsp; New Post
+          </a>
+        </li>
+        <li class="nav-item" [cdkMenuTriggerFor]="profileMenu">
             <span class="nav-link d-flex align-items-center">
               @if (currentUser()?.image !== null) {
-                <img class="user-pic card" [src]="currentUser()?.image" alt="User avatar" />
+                <img class="user-pic profile-avatar" [src]=" currentUser()?.image" alt="User avatar" />
               } @else {
                 <mat-icon mat-card-avatar class="material-symbols-outlined user-icon">
                     account_circle
@@ -26,11 +30,10 @@
               }
               <span class="username-text">&nbsp; {{ currentUser()?.username }}</span>
             </span>
-          </li>
-          <ng-template #profileMenu>
-            <md-profile-menu [currentUser]="currentUser" />
-          </ng-template>
-        </ng-container>
+        </li>
+        <ng-template #profileMenu>
+          <md-profile-menu [currentUser]="currentUser" />
+        </ng-template>
       }
       @if (isAnonymous()) {
         <li class="nav-item">
@@ -44,11 +47,6 @@
           </a>
         </li>
       }
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/aboutUs']">
-          &nbsp; About Us
-        </a>
-      </li>
     </ul>
   </div>
 </nav>

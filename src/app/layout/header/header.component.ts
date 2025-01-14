@@ -28,8 +28,8 @@ import {ProfileMenuComponent} from '@app/layout/header/profile-menu/profile-menu
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  isLoginIn!: Signal<boolean | null>
-  isAnonymous!: Signal<boolean>
+  isLoggedIn!: Signal<boolean | null>
+  isAnonymous!: Signal<boolean | null>
   currentUser!: Signal<CurrentUserInterface | null>
 
   constructor(private store: Store) {}
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   }
 
   initializeValue(): void {
-    this.isLoginIn = this.store.selectSignal(isLoggedInSelector)
+    this.isLoggedIn = this.store.selectSignal(isLoggedInSelector)
     this.isAnonymous = this.store.selectSignal(isAnonymousSelector)
     this.currentUser = this.store.selectSignal(currentUserSelector)
   }
